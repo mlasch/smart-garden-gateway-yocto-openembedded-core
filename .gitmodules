@@ -1,0 +1,6 @@
+[submodule "bitbake"]
+	path = bitbake
+	url = ../smart-garden-low-cost-gateway-yocto-bitbake.git
+[submodule "meta-mediatek"]
+	path = meta-mediatek
+	url = ../smart-garden-low-cost-gateway-yocto-meta-mediatek.git
