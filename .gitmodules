@@ -4,3 +4,6 @@
 [submodule "meta-mediatek"]
 	path = meta-mediatek
 	url = ../smart-garden-low-cost-gateway-yocto-meta-mediatek.git
+[submodule "meta-distribution"]
+	path = meta-distribution
+	url = ../smart-garden-low-cost-gateway-yocto-meta-distribution.git
