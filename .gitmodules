@@ -7,3 +7,6 @@
 [submodule "meta-distribution"]
 	path = meta-distribution
 	url = ../smart-garden-low-cost-gateway-yocto-meta-distribution.git
+[submodule "meta-openembedded"]
+	path = meta-openembedded
+	url = ../smart-garden-low-cost-gateway-yocto-meta-openembedded.git
