@@ -10,3 +10,6 @@
 [submodule "meta-openembedded"]
 	path = meta-openembedded
 	url = ../smart-garden-low-cost-gateway-yocto-meta-openembedded.git
+[submodule "meta-readonly-rootfs-overlay"]
+	path = meta-readonly-rootfs-overlay
+	url = ../smart-garden-low-cost-gateway-yocto-meta-readonly-rootfs-overlay.git
