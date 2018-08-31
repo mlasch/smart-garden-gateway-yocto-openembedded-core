@@ -16,3 +16,6 @@
 [submodule "meta-gardena"]
 	path = meta-gardena
 	url = ../smart-garden-low-cost-gateway-yocto-meta-gardena.git
+[submodule "meta-lemonbeat-firmware"]
+	path = meta-lemonbeat-firmware
+	url = ../smart-garden-low-cost-gateway-meta-lemonbeat-firmware.git
