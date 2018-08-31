@@ -13,3 +13,6 @@
 [submodule "meta-readonly-rootfs-overlay"]
 	path = meta-readonly-rootfs-overlay
 	url = ../smart-garden-low-cost-gateway-yocto-meta-readonly-rootfs-overlay.git
+[submodule "meta-gardena"]
+	path = meta-gardena
+	url = ../smart-garden-low-cost-gateway-yocto-meta-gardena.git
