@@ -24,6 +24,10 @@ get_real_dtb_path_in_kernel () {
 	if [ ! -e "$dtb_path" ]; then
 		dtb_path="${B}/arch/${ARCH}/boot/$dtb"
 	fi
+	if [ ! -e "${dtb_path}" ]; then
+		dtb_path="$(find ${B}/arch/${ARCH}/boot -name ${dtb} -type f)"
+	fi
+
 	echo "$dtb_path"
 }
 
