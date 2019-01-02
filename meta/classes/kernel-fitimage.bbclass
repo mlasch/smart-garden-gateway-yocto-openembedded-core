@@ -11,7 +11,7 @@ python __anonymous () {
         if uarch == "arm64":
             replacementtype = "Image"
         elif uarch == "mips":
-            replacementtype = "vmlinuz.bin"
+            replacementtype = "vmlinux.bin"
         elif uarch == "x86":
             replacementtype = "bzImage"
         elif uarch == "microblaze":
@@ -383,6 +383,9 @@ fitimage_assemble() {
 			DTB_PATH="arch/${ARCH}/boot/dts/${DTB}"
 			if [ ! -e "${DTB_PATH}" ]; then
 				DTB_PATH="arch/${ARCH}/boot/${DTB}"
+			fi
+			if [ ! -e "${DTB_PATH}" ]; then
+				DTB_PATH="$(find arch/${ARCH}/boot -name ${DTB} -type f)"
 			fi
 
 			DTB=$(echo "${DTB}" | tr '/' '_')

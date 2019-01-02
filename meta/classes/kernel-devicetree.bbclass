@@ -24,6 +24,10 @@ get_real_dtb_path_in_kernel () {
 	if [ ! -e "$dtb_path" ]; then
 		dtb_path="${B}/arch/${ARCH}/boot/$dtb"
 	fi
+	if [ ! -e "${dtb_path}" ]; then
+		dtb_path="$(find ${B}/arch/${ARCH}/boot -name ${dtb} -type f)"
+	fi
+
 	echo "$dtb_path"
 }
 
@@ -47,13 +51,6 @@ do_configure_append() {
 			bberror 'The KERNEL_DEVICETREE_BUNDLE requires the KERNEL_IMAGETYPE to contain zImage.'
 		fi
 	fi
-}
-
-do_compile_append() {
-	for dtbf in ${KERNEL_DEVICETREE}; do
-		dtb=`normalize_dtb "$dtbf"`
-		oe_runmake $dtb
-	done
 }
 
 do_install_append() {
