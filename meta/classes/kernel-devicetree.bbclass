@@ -53,6 +53,13 @@ do_configure_append() {
 	fi
 }
 
+do_compile_append() {
+	for dtbf in ${KERNEL_DEVICETREE}; do
+		dtb=`normalize_dtb "$dtbf"`
+		oe_runmake $dtb
+	done
+}
+
 do_install_append() {
 	for dtbf in ${KERNEL_DEVICETREE}; do
 		dtb=`normalize_dtb "$dtbf"`
