@@ -21,10 +21,27 @@ SRC_URI = "https://download.qemu.org/${BPN}-${PV}.tar.xz \
            file://0009-apic-fixup-fallthrough-to-PIC.patch \
            file://0010-linux-user-Fix-webkitgtk-hangs-on-32-bit-x86-target.patch \
            file://0011-Revert-linux-user-fix-mmap-munmap-mprotect-mremap-sh.patch \
+           file://CVE-2018-10839.patch\
            file://CVE-2018-15746.patch \
-           file://CVE-2018-17958.patch \
            file://CVE-2018-17962.patch \
            file://CVE-2018-17963.patch \
+           file://CVE-2018-16867.patch \
+           file://CVE-2018-16872.patch \
+           file://CVE-2018-18849.patch \
+           file://CVE-2018-19364_p1.patch \
+           file://CVE-2018-19364_p2.patch \
+           file://CVE-2018-19489.patch \
+           file://CVE-2019-12155.patch \
+           file://CVE-2018-20815_p1.patch \
+           file://CVE-2018-20815_p2.patch \
+           file://CVE-2019-9824.patch \
+           file://0014-linux-user-fix-to-handle-variably-sized-SIOCGSTAMP-w.patch \
+           file://CVE-2018-18954.patch \
+           file://CVE-2019-3812.patch \
+           file://CVE-2019-6778.patch \
+           file://CVE-2019-8934.patch \
+           file://0001-linux-user-assume-__NR_gettid-always-exists.patch \
+           file://0001-linux-user-rename-gettid-to-sys_gettid-to-avoid-clas.patch \
            "
 UPSTREAM_CHECK_REGEX = "qemu-(?P<pver>\d+(\.\d+)+)\.tar"
 

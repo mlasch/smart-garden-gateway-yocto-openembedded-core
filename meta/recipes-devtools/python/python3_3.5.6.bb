@@ -9,8 +9,6 @@ DISTRO_SRC_URI_linuxstdbase = ""
 SRC_URI = "http://www.python.org/ftp/python/${PV}/Python-${PV}.tar.xz \
 file://python-config.patch \
 file://030-fixup-include-dirs.patch \
-file://070-dont-clean-ipkg-install.patch \
-file://080-distutils-dont_adjust_files.patch \
 file://130-readline-setup.patch \
 file://150-fix-setupterm.patch \
 file://0001-h2py-Fix-issue-13032-where-it-fails-with-UnicodeDeco.patch \
@@ -45,6 +43,11 @@ SRC_URI += "\
             file://0004-bpo-33570-TLS-1.3-ciphers-for-OpenSSL-1.1.1-GH-6976.patch \
             file://0005-bpo-30714-ALPN-changes-for-OpenSSL-1.1.0f-2305.patch \
             file://run-ptest \
+            file://CVE-2019-9740.patch \
+            file://CVE-2018-14647.patch \
+            file://CVE-2018-20406.patch \
+            file://CVE-2018-20852.patch \
+            file://CVE-2019-9636.patch \
            "
 
 inherit multilib_header python3native update-alternatives qemu ptest
@@ -63,6 +66,7 @@ CACHED_CONFIGUREVARS = "ac_cv_have_chflags=no \
                 ac_cv_buggy_getaddrinfo=no \
                 ac_cv_file__dev_ptmx=yes \
                 ac_cv_file__dev_ptc=no \
+                ac_cv_working_tzset=yes \
 "
 
 TARGET_CC_ARCH += "-DNDEBUG -fno-inline"
@@ -285,7 +289,7 @@ python(){
         for value in python_manifest[key]['files']:
             d.appendVar('FILES_' + pypackage, ' ' + value)
 
-    	# Add cached files
+        # Add cached files
         if include_pycs == '1':
             for value in python_manifest[key]['cached']:
                     d.appendVar('FILES_' + pypackage, ' ' + value)

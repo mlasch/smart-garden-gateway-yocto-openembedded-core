@@ -6,7 +6,6 @@ SRC_URI = "http://www.python.org/ftp/python/${PV}/Python-${PV}.tar.xz \
 file://12-distutils-prefix-is-inside-staging-area.patch \
 file://python-config.patch \
 file://030-fixup-include-dirs.patch \
-file://070-dont-clean-ipkg-install.patch \
 file://080-distutils-dont_adjust_files.patch \
 file://130-readline-setup.patch \
 file://150-fix-setupterm.patch \
@@ -82,7 +81,7 @@ python(){
 
     # Read JSON manifest
     import json
-    pythondir = d.getVar('THISDIR',True)
+    pythondir = d.getVar('THISDIR')
     with open(pythondir+'/python3/python3-manifest.json') as manifest_file:
         python_manifest=json.load(manifest_file)
 
