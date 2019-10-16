@@ -320,6 +320,7 @@ class QemuRunner:
                 self.logger.debug("Target didn't reach login banner in %d seconds (%s)" %
                                   (self.boottime, time.strftime("%D %H:%M:%S")))
             tail = lambda l: "\n".join(l.splitlines()[-25:])
+            bootlog = bootlog.decode("utf-8")
             # in case bootlog is empty, use tail qemu log store at self.msg
             lines = tail(bootlog if bootlog else self.msg)
             self.logger.debug("Last 25 lines of text:\n%s" % lines)
@@ -345,6 +346,7 @@ class QemuRunner:
             else:
                 self.logger.debug("Couldn't login into serial console"
                             " as root using blank password")
+                self.logger.debug("The output:\n%s" % output)
         except:
             self.logger.debug("Serial console failed while trying to login")
         return True
@@ -420,7 +422,7 @@ class QemuRunner:
                 return True
         return False
 
-    def run_serial(self, command, raw=False, timeout=5):
+    def run_serial(self, command, raw=False, timeout=60):
         # We assume target system have echo to get command status
         if not raw:
             command = "%s; echo $?\n" % command
