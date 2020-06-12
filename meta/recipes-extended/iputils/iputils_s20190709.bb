@@ -17,6 +17,10 @@ S = "${WORKDIR}/git"
 
 UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>s\d+)"
 
+# Fixed in 2000-10-10, but the versioning of iputils
+# breaks the version order.
+CVE_CHECK_WHITELIST += "CVE-2000-1213 CVE-2000-1214"
+
 PACKAGECONFIG ??= "libcap libgcrypt rarpd traceroute6"
 PACKAGECONFIG[libcap] = "-DUSE_CAP=true, -DUSE_CAP=false, libcap"
 PACKAGECONFIG[libgcrypt] = "-DUSE_CRYPTO=gcrypt, -DUSE_CRYPTO=none, libgcrypt"
@@ -28,7 +32,8 @@ PACKAGECONFIG[docs] = "-DBUILD_HTML_MANS=true -DBUILD_MANS=true,-DBUILD_HTML_MAN
 
 inherit meson update-alternatives
 
-EXTRA_OEMESON += "--prefix=${root_prefix}/"
+# Have to disable setcap/suid as its not deterministic
+EXTRA_OEMESON += "--prefix=${root_prefix}/ -DNO_SETCAP_OR_SUID=true"
 
 ALTERNATIVE_PRIORITY = "100"
 

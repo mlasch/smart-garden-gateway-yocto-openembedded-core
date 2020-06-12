@@ -940,8 +940,10 @@ def modify(args, config, basepath, workspace):
                         '}\n')
             if rd.getVarFlag('do_menuconfig','task'):
                 f.write('\ndo_configure_append() {\n'
-                '    cp ${B}/.config ${S}/.config.baseline\n'
-                '    ln -sfT ${B}/.config ${S}/.config.new\n'
+                '    if [ ! ${DEVTOOL_DISABLE_MENUCONFIG} ]; then\n'
+                '        cp ${B}/.config ${S}/.config.baseline\n'
+                '        ln -sfT ${B}/.config ${S}/.config.new\n'
+                '    fi\n'
                 '}\n')
             if initial_rev:
                 f.write('\n# initial_rev: %s\n' % initial_rev)
@@ -2011,7 +2013,7 @@ def finish(args, config, basepath, workspace):
     no_clean = args.no_clean
     tinfoil = setup_tinfoil(basepath=basepath, tracking=True)
     try:
-        rd = parse_recipe(config, tinfoil, args.recipename, True, False)
+        rd = parse_recipe(config, tinfoil, args.recipename, True)
         if not rd:
             return 1
 

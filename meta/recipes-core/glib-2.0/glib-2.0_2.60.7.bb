@@ -16,6 +16,7 @@ SRC_URI = "${GNOME_MIRROR}/glib/${SHRT_VER}/glib-${PV}.tar.xz \
            file://0001-Do-not-write-bindir-into-pkg-config-files.patch \
            file://0001-meson.build-do-not-hardcode-linux-as-the-host-system.patch \
            file://0001-meson-do-a-build-time-check-for-strlcpy-before-attem.patch \
+           file://CVE-2020-6750.patch \
            "
 
 SRC_URI_append_class-native = " file://relocate-modules.patch"
@@ -23,3 +24,6 @@ SRC_URI_append_class-target = " file://glib-meson.cross"
 
 SRC_URI[md5sum] = "f036f78a7fca330d9f7d939fcf794bde"
 SRC_URI[sha256sum] = "8b12c0af569afd3b71200556ad751bad4cf4bf7bc4b5f880638459a42ca86310"
+
+# Fixed in 2.60.4, but CPE data is outdated
+CVE_CHECK_WHITELIST += "CVE-2019-12450"
